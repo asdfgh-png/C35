@@ -2,8 +2,12 @@ var balloon , database ;
 var position ;
 
 function preload(){
-    bg =loadImage("Images/cityImage.png");
+   bg =loadImage("Images/cityImage.png");
    balloonImage1=loadAnimation("Images/HotAirBallon01.png");
+   balloonImage2=loadAnimation("Images/HotAirBallon01.png","Images/HotAirBallon01.png",
+   "Images/HotAirBallon01.png","Images/HotAirBallon02.png","Images/HotAirBallon02.png",
+   "Images/HotAirBallon02.png","Images/HotAirBallon03.png",
+   "Images/HotAirBallon03.png","Images/HotAirBallon03.png");
 }
 
 
@@ -26,19 +30,28 @@ function draw(){
     if(position !== undefined){
         if(keyDown(LEFT_ARROW)){
           writePosition(-10,0);
+          balloon.addAnimation("hotAirBalloon",balloonImage2);
         }
         else if(keyDown(RIGHT_ARROW)){
           writePosition(10,0);
+           balloon.addAnimation("hotAirBalloon",balloonImage2);
         }
+        
         else if(keyDown(UP_ARROW)){
           writePosition(0,-10);
           balloon.scale=balloon.scale -0.005;
+          balloon.addAnimation("hotAirBalloon",balloonImage2);
         }
         else if(keyDown(DOWN_ARROW)){
           writePosition(0,+10);
           balloon.scale=balloon.scale+0.005;
+          balloon.addAnimation("hotAirBalloon",balloonImage2);
         }
         drawSprites();
+         fill(0);
+  stroke("white");
+  textSize(25);
+  text("**Use arrow keys to move Hot Air Balloon!",40,40);
     }    
 }
 
